@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알약 식별</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="max-w-md mx-auto mt-10">
+            <!-- 식별 페이지 -->
+            <div id="identify-page" class="bg-white shadow-md rounded-lg p-4">
+                <!-- 앞면 이미지 업로드 -->
+                <div class="mb-4">
+                    <img id="preview-front-image" src="{{ url_for('static', filename='images/name.png') }}" alt="약품 앞면 사진" class="mb-2 mx-auto">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="front-image-upload">
+                        약품 앞면 사진을 찍거나 저장소에서 선택해주세요!
+                    </label>
+                    <input type="file" id="front-image-upload" class="block w-full text-sm text-gray-500 file:py-2 file:px-4 file:rounded-full file:border-0 file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100" accept="image/*">
+                </div>
+                <!-- 뒷면 이미지 업로드 -->
+                <div class="mb-4">
+                    <img id="preview-back-image" src="{{ url_for('static', filename='images/name.png') }}" alt="약품 뒷면 사진" class="mb-2 mx-auto">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="back-image-upload">
+                        약품 뒷면 사진을 찍거나 저장소에서 선택해주세요!
+                    </label>
+                    <input type="file" id="back-image-upload" class="block w-full text-sm text-gray-500 file:py-2 file:px-4 file:rounded-full file:border-0 file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100" accept="image/*">
+                </div>
+                <!-- 식별 버튼 -->
+                <button id="identify-btn" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    알약 식별
+                </button>
+            </div>
+            <!-- 로딩 페이지 -->
+            <div id="loading-page" class="hidden bg-white shadow-md rounded-lg p-4 mt-5">
+                <p class="text-center">데이터를 불러오는 중입니다...</p>
+            </div>
+            <!-- 결과 페이지 -->
+            <div id="result-page" class="hidden bg-white shadow-md rounded-lg p-4 mt-5">
+                <button id="back-to-identify" class="mb-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    뒤로 가기
+                </button>
+                <div id="pill-images" class="grid grid-cols-2 gap-4"></div>
+            </div>
+            <!-- 상세 정보 페이지 -->
+            <div id="detail-page" class="hidden bg-white shadow-md rounded-lg p-4 mt-5">
+                <button id="back-to-result" class="mb-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    결과 목록으로
+                </button>
+                <!-- 알약 상세 이미지 추가 -->
+                <img id="detail-image" src="" alt="선택된 알약 이미지" class="mb-2 mx-auto" style="display: none;">
+                <div id="pill-info">
+                    <!-- 알약 정보 표시 -->
+                    <div class="result-item mb-2 p-2">
+                        <span class="result-label font-bold">약품 확인:</span>
+                        <span id="pill-name" class="ml-2"></span>
+                    </div>
+                    <div class="result-item mb-2 p-2">
+                        <span class="result-label font-bold">효능 효과:</span>
+                        <span id="efficacy" class="ml-2"></span>
+                    </div>
+                    <div class="result-item mb-2 p-2">
+                        <span class="result-label font-bold">용법 용량:</span>
+                        <span id="dosage" class="ml-2"></span>
+                    </div>
+                    <div class="result-item mb-2 p-2">
+                        <span class="result-label font-bold">주의 사항:</span>
+                        <span id="precautions" class="ml-2"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
