@@ -1,3 +1,4 @@
+![header](https://capsule-render.vercel.app/api?type=shark&color=fa8072&height=200&section=header&text=WASSUP%20PROJECT%20TEAM6&fontColor=FFFFFF&fontSize=60)
 ## 프로젝트 소개
 
 ### 이미지를 통한 알약 분석
